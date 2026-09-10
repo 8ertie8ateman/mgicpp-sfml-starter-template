@@ -1,6 +1,6 @@
 
-#ifndef PLATFORMER_GAME_H
-#define PLATFORMER_GAME_H
+#ifndef SFML_GAME_H
+#define SFML_GAME_H
 
 #include <SFML/Graphics.hpp>
 
@@ -12,14 +12,15 @@ class Game
   bool init();
   void update(float dt);
   void render();
-  void mouseClicked(sf::Event event);
-  void keyPressed(sf::Event event);
+  void mouseButtonPressed(const sf::Event::MouseButtonPressed* event);
+  void mouseButtonReleased(const sf::Event::MouseButtonReleased* event);
+  void keyPressed(const sf::Event::KeyPressed* event);
+  void keyReleased(const sf::Event::KeyReleased* event);
 
  private:
   sf::RenderWindow& window;
-  sf::Sprite ball;
-  sf::Texture ball_texture;
+  
 
 };
 
-#endif // PLATFORMER_GAME_H
+#endif // SFML_GAME_H
