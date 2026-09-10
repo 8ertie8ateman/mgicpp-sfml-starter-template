@@ -10,7 +10,7 @@ include(FetchContent)   # Allows fetching content remotely at configure time
 FetchContent_Declare(   # Fetches SFML from github and puts it in the build directory
     SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 3.0.2    # Makes sure to fetch SFML version 2.6.1
+    GIT_TAG 3.0.2    # Makes sure to fetch SFML version 3.0.2
 )
 
 FetchContent_MakeAvailable(SFML)    # Makes sure SFML and its dependencies are avaiable for the project
@@ -25,10 +25,3 @@ target_compile_features(SFMLGame PRIVATE cxx_std_20)  # Defines which standard o
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Data/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Data/)  # Copies data from source directory to build directory (so the executable can access it)
 
-#if(WIN32)
-#    add_custom_command(
-#        TARGET SFMLGame
-#        COMMENT "Copy OpenAL DLL to build directory so app can have sound"
-#        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:SFMLGame>
-#        VERBATIM)
-#endif()
