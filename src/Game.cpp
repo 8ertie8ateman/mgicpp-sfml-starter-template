@@ -21,12 +21,13 @@ bool Game::init()
 }
 
 // Update runs after event polling and before rendering
+// use it for everything that needs to update between frames
 void Game::update(float dt)
 {
 
 }
 
-// Runs after update, use it to tell the window what to draw
+// Runs after update, use it to tell the window what to draw this frame
 void Game::render()
 {
 

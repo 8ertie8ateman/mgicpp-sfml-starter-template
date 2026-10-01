@@ -18,7 +18,7 @@ int main()
   //run the init function of the game class and check it all initialises ok
   if (!game.init())
   {
-    return 0;
+      return 0;
   }
 
   // A Clock starts counting as soon as it's created
@@ -27,7 +27,7 @@ int main()
   // Game loop: run the program as long as the window is open
   while (window.isOpen())
   {
-    //calculate delta time - time between the last loop and this one
+    //calculate delta time dt = time between the last loop and this one
     sf::Time time = clock.restart();
     float dt = time.asSeconds();
 
@@ -39,16 +39,25 @@ int main()
         {
             window.close();
         }
+
         //A Key was pressed, put the information in a KeyPressed event and send it to a game function to be handled
         else if (const sf::Event::KeyPressed* keyPressed = event->getIf<sf::Event::KeyPressed>())
         {
             game.keyPressed(keyPressed);
         }
+
+        //A Key was released, put the information in a KeyReleased event and send it to a game function to be handled
+        else if (const sf::Event::KeyReleased* keyReleased = event->getIf<sf::Event::KeyReleased>())
+        {
+            game.keyReleased(keyReleased);
+        }
+
         //A Mouse button was pressed, put the information in a MouseButtonPressed event and send it to a game function to be handled
         else if (const sf::Event::MouseButtonPressed* mousePressed = event->getIf<sf::Event::MouseButtonPressed>())
         {
             game.mouseButtonPressed(mousePressed);
         }
+
         //A Mouse button was released, put the information in a MouseButtonPressed event and send it to a game function to be handled
         else if (const sf::Event::MouseButtonReleased* mouseReleased = event->getIf<sf::Event::MouseButtonReleased>())
         {

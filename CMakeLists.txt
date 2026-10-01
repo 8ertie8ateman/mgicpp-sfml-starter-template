@@ -6,13 +6,12 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 #---- Fetch SFML, only works if you have git installed on your machine ----#
 
-include(FetchContent)   # Allows fetching content remotely at configure time
+include(FetchContent)   # Allows fetching content remotely during project configuration
 FetchContent_Declare(   # Fetches SFML from github and puts it in the build directory
     SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 3.0.2    # Makes sure to fetch SFML version 3.0.2
 )
-
 FetchContent_MakeAvailable(SFML)    # Makes sure SFML and its dependencies are avaiable for the project
 
 #---- File management & .exe creation ----#
